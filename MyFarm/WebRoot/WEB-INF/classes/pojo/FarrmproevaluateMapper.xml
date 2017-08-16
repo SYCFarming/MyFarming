@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.FarrmproevaluateMapper" >
+  <resultMap id="BaseResultMap" type="pojo.Farrmproevaluate" >
+    <id column="EID" property="eid" jdbcType="DECIMAL" />
+    <result column="EINFO" property="einfo" jdbcType="VARCHAR" />
+    <result column="ETIME" property="etime" jdbcType="TIMESTAMP" />
+    <result column="COUNTID" property="countid" jdbcType="DECIMAL" />
+    <result column="PROID" property="proid" jdbcType="DECIMAL" />
+    <result column="PROEVAL" property="proeval" jdbcType="DECIMAL" />
+    <result column="STOREEVAL" property="storeeval" jdbcType="DECIMAL" />
+    <result column="DEFULT" property="defult" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    EID, EINFO, ETIME, COUNTID, PROID, PROEVAL, STOREEVAL, DEFULT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from FARRMPROEVALUATE
+    where EID = #{eid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from FARRMPROEVALUATE
+    where EID = #{eid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pojo.Farrmproevaluate" >
+    insert into FARRMPROEVALUATE (EID, EINFO, ETIME, 
+      COUNTID, PROID, PROEVAL, 
+      STOREEVAL, DEFULT)
+    values (#{eid,jdbcType=DECIMAL}, #{einfo,jdbcType=VARCHAR}, #{etime,jdbcType=TIMESTAMP}, 
+      #{countid,jdbcType=DECIMAL}, #{proid,jdbcType=DECIMAL}, #{proeval,jdbcType=DECIMAL}, 
+      #{storeeval,jdbcType=DECIMAL}, #{defult,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Farrmproevaluate" >
+    insert into FARRMPROEVALUATE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eid != null" >
+        EID,
+      </if>
+      <if test="einfo != null" >
+        EINFO,
+      </if>
+      <if test="etime != null" >
+        ETIME,
+      </if>
+      <if test="countid != null" >
+        COUNTID,
+      </if>
+      <if test="proid != null" >
+        PROID,
+      </if>
+      <if test="proeval != null" >
+        PROEVAL,
+      </if>
+      <if test="storeeval != null" >
+        STOREEVAL,
+      </if>
+      <if test="defult != null" >
+        DEFULT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eid != null" >
+        #{eid,jdbcType=DECIMAL},
+      </if>
+      <if test="einfo != null" >
+        #{einfo,jdbcType=VARCHAR},
+      </if>
+      <if test="etime != null" >
+        #{etime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countid != null" >
+        #{countid,jdbcType=DECIMAL},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=DECIMAL},
+      </if>
+      <if test="proeval != null" >
+        #{proeval,jdbcType=DECIMAL},
+      </if>
+      <if test="storeeval != null" >
+        #{storeeval,jdbcType=DECIMAL},
+      </if>
+      <if test="defult != null" >
+        #{defult,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Farrmproevaluate" >
+    update FARRMPROEVALUATE
+    <set >
+      <if test="einfo != null" >
+        EINFO = #{einfo,jdbcType=VARCHAR},
+      </if>
+      <if test="etime != null" >
+        ETIME = #{etime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countid != null" >
+        COUNTID = #{countid,jdbcType=DECIMAL},
+      </if>
+      <if test="proid != null" >
+        PROID = #{proid,jdbcType=DECIMAL},
+      </if>
+      <if test="proeval != null" >
+        PROEVAL = #{proeval,jdbcType=DECIMAL},
+      </if>
+      <if test="storeeval != null" >
+        STOREEVAL = #{storeeval,jdbcType=DECIMAL},
+      </if>
+      <if test="defult != null" >
+        DEFULT = #{defult,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EID = #{eid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Farrmproevaluate" >
+    update FARRMPROEVALUATE
+    set EINFO = #{einfo,jdbcType=VARCHAR},
+      ETIME = #{etime,jdbcType=TIMESTAMP},
+      COUNTID = #{countid,jdbcType=DECIMAL},
+      PROID = #{proid,jdbcType=DECIMAL},
+      PROEVAL = #{proeval,jdbcType=DECIMAL},
+      STOREEVAL = #{storeeval,jdbcType=DECIMAL},
+      DEFULT = #{defult,jdbcType=VARCHAR}
+    where EID = #{eid,jdbcType=DECIMAL}
+  </update>
+</mapper>

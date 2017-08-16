@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.FarrmappointmentMapper" >
+  <resultMap id="BaseResultMap" type="pojo.Farrmappointment" >
+    <id column="AID" property="aid" jdbcType="DECIMAL" />
+    <result column="ATIME" property="atime" jdbcType="TIMESTAMP" />
+    <result column="COUNTID" property="countid" jdbcType="DECIMAL" />
+    <result column="APRICES" property="aprices" jdbcType="DECIMAL" />
+    <result column="ASTATUES" property="astatues" jdbcType="DECIMAL" />
+    <result column="DEFULT" property="defult" jdbcType="DECIMAL" />
+    <result column="STOREID" property="storeid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    AID, ATIME, COUNTID, APRICES, ASTATUES, DEFULT, STOREID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from FARRMAPPOINTMENT
+    where AID = #{aid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from FARRMAPPOINTMENT
+    where AID = #{aid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pojo.Farrmappointment" >
+    insert into FARRMAPPOINTMENT (AID, ATIME, COUNTID, 
+      APRICES, ASTATUES, DEFULT, 
+      STOREID)
+    values (#{aid,jdbcType=DECIMAL}, #{atime,jdbcType=TIMESTAMP}, #{countid,jdbcType=DECIMAL}, 
+      #{aprices,jdbcType=DECIMAL}, #{astatues,jdbcType=DECIMAL}, #{defult,jdbcType=DECIMAL}, 
+      #{storeid,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Farrmappointment" >
+    insert into FARRMAPPOINTMENT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        AID,
+      </if>
+      <if test="atime != null" >
+        ATIME,
+      </if>
+      <if test="countid != null" >
+        COUNTID,
+      </if>
+      <if test="aprices != null" >
+        APRICES,
+      </if>
+      <if test="astatues != null" >
+        ASTATUES,
+      </if>
+      <if test="defult != null" >
+        DEFULT,
+      </if>
+      <if test="storeid != null" >
+        STOREID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=DECIMAL},
+      </if>
+      <if test="atime != null" >
+        #{atime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countid != null" >
+        #{countid,jdbcType=DECIMAL},
+      </if>
+      <if test="aprices != null" >
+        #{aprices,jdbcType=DECIMAL},
+      </if>
+      <if test="astatues != null" >
+        #{astatues,jdbcType=DECIMAL},
+      </if>
+      <if test="defult != null" >
+        #{defult,jdbcType=DECIMAL},
+      </if>
+      <if test="storeid != null" >
+        #{storeid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Farrmappointment" >
+    update FARRMAPPOINTMENT
+    <set >
+      <if test="atime != null" >
+        ATIME = #{atime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countid != null" >
+        COUNTID = #{countid,jdbcType=DECIMAL},
+      </if>
+      <if test="aprices != null" >
+        APRICES = #{aprices,jdbcType=DECIMAL},
+      </if>
+      <if test="astatues != null" >
+        ASTATUES = #{astatues,jdbcType=DECIMAL},
+      </if>
+      <if test="defult != null" >
+        DEFULT = #{defult,jdbcType=DECIMAL},
+      </if>
+      <if test="storeid != null" >
+        STOREID = #{storeid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where AID = #{aid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Farrmappointment" >
+    update FARRMAPPOINTMENT
+    set ATIME = #{atime,jdbcType=TIMESTAMP},
+      COUNTID = #{countid,jdbcType=DECIMAL},
+      APRICES = #{aprices,jdbcType=DECIMAL},
+      ASTATUES = #{astatues,jdbcType=DECIMAL},
+      DEFULT = #{defult,jdbcType=DECIMAL},
+      STOREID = #{storeid,jdbcType=DECIMAL}
+    where AID = #{aid,jdbcType=DECIMAL}
+  </update>
+</mapper>

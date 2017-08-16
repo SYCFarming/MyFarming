@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.FarrmstoreMapper" >
+  <resultMap id="BaseResultMap" type="pojo.Farrmstore" >
+    <id column="STOREID" property="storeid" jdbcType="DECIMAL" />
+    <result column="STORENAME" property="storename" jdbcType="VARCHAR" />
+    <result column="STOREIMAGE" property="storeimage" jdbcType="VARCHAR" />
+    <result column="STORESTATUES" property="storestatues" jdbcType="DECIMAL" />
+    <result column="COUNTID" property="countid" jdbcType="DECIMAL" />
+    <result column="STOREINFO" property="storeinfo" jdbcType="VARCHAR" />
+    <result column="STOREADRESS" property="storeadress" jdbcType="VARCHAR" />
+    <result column="STORERSCORE" property="storerscore" jdbcType="DECIMAL" />
+    <result column="STORERETAIN" property="storeretain" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STOREID, STORENAME, STOREIMAGE, STORESTATUES, COUNTID, STOREINFO, STOREADRESS, STORERSCORE, 
+    STORERETAIN
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from FARRMSTORE
+    where STOREID = #{storeid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from FARRMSTORE
+    where STOREID = #{storeid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pojo.Farrmstore" >
+    insert into FARRMSTORE (STOREID, STORENAME, STOREIMAGE, 
+      STORESTATUES, COUNTID, STOREINFO, 
+      STOREADRESS, STORERSCORE, STORERETAIN
+      )
+    values (#{storeid,jdbcType=DECIMAL}, #{storename,jdbcType=VARCHAR}, #{storeimage,jdbcType=VARCHAR}, 
+      #{storestatues,jdbcType=DECIMAL}, #{countid,jdbcType=DECIMAL}, #{storeinfo,jdbcType=VARCHAR}, 
+      #{storeadress,jdbcType=VARCHAR}, #{storerscore,jdbcType=DECIMAL}, #{storeretain,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Farrmstore" >
+    insert into FARRMSTORE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="storeid != null" >
+        STOREID,
+      </if>
+      <if test="storename != null" >
+        STORENAME,
+      </if>
+      <if test="storeimage != null" >
+        STOREIMAGE,
+      </if>
+      <if test="storestatues != null" >
+        STORESTATUES,
+      </if>
+      <if test="countid != null" >
+        COUNTID,
+      </if>
+      <if test="storeinfo != null" >
+        STOREINFO,
+      </if>
+      <if test="storeadress != null" >
+        STOREADRESS,
+      </if>
+      <if test="storerscore != null" >
+        STORERSCORE,
+      </if>
+      <if test="storeretain != null" >
+        STORERETAIN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="storeid != null" >
+        #{storeid,jdbcType=DECIMAL},
+      </if>
+      <if test="storename != null" >
+        #{storename,jdbcType=VARCHAR},
+      </if>
+      <if test="storeimage != null" >
+        #{storeimage,jdbcType=VARCHAR},
+      </if>
+      <if test="storestatues != null" >
+        #{storestatues,jdbcType=DECIMAL},
+      </if>
+      <if test="countid != null" >
+        #{countid,jdbcType=DECIMAL},
+      </if>
+      <if test="storeinfo != null" >
+        #{storeinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeadress != null" >
+        #{storeadress,jdbcType=VARCHAR},
+      </if>
+      <if test="storerscore != null" >
+        #{storerscore,jdbcType=DECIMAL},
+      </if>
+      <if test="storeretain != null" >
+        #{storeretain,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Farrmstore" >
+    update FARRMSTORE
+    <set >
+      <if test="storename != null" >
+        STORENAME = #{storename,jdbcType=VARCHAR},
+      </if>
+      <if test="storeimage != null" >
+        STOREIMAGE = #{storeimage,jdbcType=VARCHAR},
+      </if>
+      <if test="storestatues != null" >
+        STORESTATUES = #{storestatues,jdbcType=DECIMAL},
+      </if>
+      <if test="countid != null" >
+        COUNTID = #{countid,jdbcType=DECIMAL},
+      </if>
+      <if test="storeinfo != null" >
+        STOREINFO = #{storeinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeadress != null" >
+        STOREADRESS = #{storeadress,jdbcType=VARCHAR},
+      </if>
+      <if test="storerscore != null" >
+        STORERSCORE = #{storerscore,jdbcType=DECIMAL},
+      </if>
+      <if test="storeretain != null" >
+        STORERETAIN = #{storeretain,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where STOREID = #{storeid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Farrmstore" >
+    update FARRMSTORE
+    set STORENAME = #{storename,jdbcType=VARCHAR},
+      STOREIMAGE = #{storeimage,jdbcType=VARCHAR},
+      STORESTATUES = #{storestatues,jdbcType=DECIMAL},
+      COUNTID = #{countid,jdbcType=DECIMAL},
+      STOREINFO = #{storeinfo,jdbcType=VARCHAR},
+      STOREADRESS = #{storeadress,jdbcType=VARCHAR},
+      STORERSCORE = #{storerscore,jdbcType=DECIMAL},
+      STORERETAIN = #{storeretain,jdbcType=DECIMAL}
+    where STOREID = #{storeid,jdbcType=DECIMAL}
+  </update>
+</mapper>
