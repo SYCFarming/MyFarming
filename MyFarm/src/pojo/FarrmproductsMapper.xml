@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.FarrmproductsMapper" >
+  <resultMap id="BaseResultMap" type="pojo.Farrmproducts" >
+    <id column="PROID" property="proid" jdbcType="DECIMAL" />
+    <result column="PRONAME" property="proname" jdbcType="VARCHAR" />
+    <result column="PROINFO" property="proinfo" jdbcType="VARCHAR" />
+    <result column="PROPRICE" property="proprice" jdbcType="DECIMAL" />
+    <result column="PRONUMS" property="pronums" jdbcType="DECIMAL" />
+    <result column="STOREID" property="storeid" jdbcType="DECIMAL" />
+    <result column="DEFINE" property="define" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PROID, PRONAME, PROINFO, PROPRICE, PRONUMS, STOREID, DEFINE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from FARRMPRODUCTS
+    where PROID = #{proid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from FARRMPRODUCTS
+    where PROID = #{proid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pojo.Farrmproducts" >
+    insert into FARRMPRODUCTS (PROID, PRONAME, PROINFO, 
+      PROPRICE, PRONUMS, STOREID, 
+      DEFINE)
+    values (#{proid,jdbcType=DECIMAL}, #{proname,jdbcType=VARCHAR}, #{proinfo,jdbcType=VARCHAR}, 
+      #{proprice,jdbcType=DECIMAL}, #{pronums,jdbcType=DECIMAL}, #{storeid,jdbcType=DECIMAL}, 
+      #{define,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Farrmproducts" >
+    insert into FARRMPRODUCTS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="proid != null" >
+        PROID,
+      </if>
+      <if test="proname != null" >
+        PRONAME,
+      </if>
+      <if test="proinfo != null" >
+        PROINFO,
+      </if>
+      <if test="proprice != null" >
+        PROPRICE,
+      </if>
+      <if test="pronums != null" >
+        PRONUMS,
+      </if>
+      <if test="storeid != null" >
+        STOREID,
+      </if>
+      <if test="define != null" >
+        DEFINE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="proid != null" >
+        #{proid,jdbcType=DECIMAL},
+      </if>
+      <if test="proname != null" >
+        #{proname,jdbcType=VARCHAR},
+      </if>
+      <if test="proinfo != null" >
+        #{proinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="proprice != null" >
+        #{proprice,jdbcType=DECIMAL},
+      </if>
+      <if test="pronums != null" >
+        #{pronums,jdbcType=DECIMAL},
+      </if>
+      <if test="storeid != null" >
+        #{storeid,jdbcType=DECIMAL},
+      </if>
+      <if test="define != null" >
+        #{define,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Farrmproducts" >
+    update FARRMPRODUCTS
+    <set >
+      <if test="proname != null" >
+        PRONAME = #{proname,jdbcType=VARCHAR},
+      </if>
+      <if test="proinfo != null" >
+        PROINFO = #{proinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="proprice != null" >
+        PROPRICE = #{proprice,jdbcType=DECIMAL},
+      </if>
+      <if test="pronums != null" >
+        PRONUMS = #{pronums,jdbcType=DECIMAL},
+      </if>
+      <if test="storeid != null" >
+        STOREID = #{storeid,jdbcType=DECIMAL},
+      </if>
+      <if test="define != null" >
+        DEFINE = #{define,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where PROID = #{proid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Farrmproducts" >
+    update FARRMPRODUCTS
+    set PRONAME = #{proname,jdbcType=VARCHAR},
+      PROINFO = #{proinfo,jdbcType=VARCHAR},
+      PROPRICE = #{proprice,jdbcType=DECIMAL},
+      PRONUMS = #{pronums,jdbcType=DECIMAL},
+      STOREID = #{storeid,jdbcType=DECIMAL},
+      DEFINE = #{define,jdbcType=DECIMAL}
+    where PROID = #{proid,jdbcType=DECIMAL}
+  </update>
+</mapper>

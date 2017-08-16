@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.FarrmappointmentinfosMapper" >
+  <resultMap id="BaseResultMap" type="pojo.Farrmappointmentinfos" >
+    <id column="ASID" property="asid" jdbcType="DECIMAL" />
+    <result column="PROID" property="proid" jdbcType="DECIMAL" />
+    <result column="AID" property="aid" jdbcType="DECIMAL" />
+    <result column="TRAIN" property="train" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ASID, PROID, AID, TRAIN
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from FARRMAPPOINTMENTINFOS
+    where ASID = #{asid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from FARRMAPPOINTMENTINFOS
+    where ASID = #{asid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pojo.Farrmappointmentinfos" >
+    insert into FARRMAPPOINTMENTINFOS (ASID, PROID, AID, 
+      TRAIN)
+    values (#{asid,jdbcType=DECIMAL}, #{proid,jdbcType=DECIMAL}, #{aid,jdbcType=DECIMAL}, 
+      #{train,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Farrmappointmentinfos" >
+    insert into FARRMAPPOINTMENTINFOS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="asid != null" >
+        ASID,
+      </if>
+      <if test="proid != null" >
+        PROID,
+      </if>
+      <if test="aid != null" >
+        AID,
+      </if>
+      <if test="train != null" >
+        TRAIN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="asid != null" >
+        #{asid,jdbcType=DECIMAL},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=DECIMAL},
+      </if>
+      <if test="aid != null" >
+        #{aid,jdbcType=DECIMAL},
+      </if>
+      <if test="train != null" >
+        #{train,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Farrmappointmentinfos" >
+    update FARRMAPPOINTMENTINFOS
+    <set >
+      <if test="proid != null" >
+        PROID = #{proid,jdbcType=DECIMAL},
+      </if>
+      <if test="aid != null" >
+        AID = #{aid,jdbcType=DECIMAL},
+      </if>
+      <if test="train != null" >
+        TRAIN = #{train,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ASID = #{asid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Farrmappointmentinfos" >
+    update FARRMAPPOINTMENTINFOS
+    set PROID = #{proid,jdbcType=DECIMAL},
+      AID = #{aid,jdbcType=DECIMAL},
+      TRAIN = #{train,jdbcType=DECIMAL}
+    where ASID = #{asid,jdbcType=DECIMAL}
+  </update>
+</mapper>

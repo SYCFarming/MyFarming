@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.FarrmimagesMapper" >
+  <resultMap id="BaseResultMap" type="pojo.Farrmimages" >
+    <id column="IMAGEID" property="imageid" jdbcType="DECIMAL" />
+    <result column="IMAGENAME" property="imagename" jdbcType="VARCHAR" />
+    <result column="IMAGEPATH" property="imagepath" jdbcType="VARCHAR" />
+    <result column="PROID" property="proid" jdbcType="DECIMAL" />
+    <result column="IMAGETYPE" property="imagetype" jdbcType="VARCHAR" />
+    <result column="TRAIN" property="train" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    IMAGEID, IMAGENAME, IMAGEPATH, PROID, IMAGETYPE, TRAIN
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from FARRMIMAGES
+    where IMAGEID = #{imageid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from FARRMIMAGES
+    where IMAGEID = #{imageid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pojo.Farrmimages" >
+    insert into FARRMIMAGES (IMAGEID, IMAGENAME, IMAGEPATH, 
+      PROID, IMAGETYPE, TRAIN
+      )
+    values (#{imageid,jdbcType=DECIMAL}, #{imagename,jdbcType=VARCHAR}, #{imagepath,jdbcType=VARCHAR}, 
+      #{proid,jdbcType=DECIMAL}, #{imagetype,jdbcType=VARCHAR}, #{train,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Farrmimages" >
+    insert into FARRMIMAGES
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="imageid != null" >
+        IMAGEID,
+      </if>
+      <if test="imagename != null" >
+        IMAGENAME,
+      </if>
+      <if test="imagepath != null" >
+        IMAGEPATH,
+      </if>
+      <if test="proid != null" >
+        PROID,
+      </if>
+      <if test="imagetype != null" >
+        IMAGETYPE,
+      </if>
+      <if test="train != null" >
+        TRAIN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="imageid != null" >
+        #{imageid,jdbcType=DECIMAL},
+      </if>
+      <if test="imagename != null" >
+        #{imagename,jdbcType=VARCHAR},
+      </if>
+      <if test="imagepath != null" >
+        #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=DECIMAL},
+      </if>
+      <if test="imagetype != null" >
+        #{imagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="train != null" >
+        #{train,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Farrmimages" >
+    update FARRMIMAGES
+    <set >
+      <if test="imagename != null" >
+        IMAGENAME = #{imagename,jdbcType=VARCHAR},
+      </if>
+      <if test="imagepath != null" >
+        IMAGEPATH = #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="proid != null" >
+        PROID = #{proid,jdbcType=DECIMAL},
+      </if>
+      <if test="imagetype != null" >
+        IMAGETYPE = #{imagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="train != null" >
+        TRAIN = #{train,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where IMAGEID = #{imageid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Farrmimages" >
+    update FARRMIMAGES
+    set IMAGENAME = #{imagename,jdbcType=VARCHAR},
+      IMAGEPATH = #{imagepath,jdbcType=VARCHAR},
+      PROID = #{proid,jdbcType=DECIMAL},
+      IMAGETYPE = #{imagetype,jdbcType=VARCHAR},
+      TRAIN = #{train,jdbcType=DECIMAL}
+    where IMAGEID = #{imageid,jdbcType=DECIMAL}
+  </update>
+</mapper>

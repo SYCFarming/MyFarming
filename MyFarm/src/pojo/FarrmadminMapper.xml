@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.FarrmadminMapper" >
+  <resultMap id="BaseResultMap" type="pojo.Farrmadmin" >
+    <id column="ADMINID" property="adminid" jdbcType="DECIMAL" />
+    <result column="ADMINNAME" property="adminname" jdbcType="VARCHAR" />
+    <result column="ADMINPWD" property="adminpwd" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ADMINID, ADMINNAME, ADMINPWD
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from FARRMADMIN
+    where ADMINID = #{adminid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from FARRMADMIN
+    where ADMINID = #{adminid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pojo.Farrmadmin" >
+    insert into FARRMADMIN (ADMINID, ADMINNAME, ADMINPWD
+      )
+    values (#{adminid,jdbcType=DECIMAL}, #{adminname,jdbcType=VARCHAR}, #{adminpwd,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Farrmadmin" >
+    insert into FARRMADMIN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adminid != null" >
+        ADMINID,
+      </if>
+      <if test="adminname != null" >
+        ADMINNAME,
+      </if>
+      <if test="adminpwd != null" >
+        ADMINPWD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adminid != null" >
+        #{adminid,jdbcType=DECIMAL},
+      </if>
+      <if test="adminname != null" >
+        #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="adminpwd != null" >
+        #{adminpwd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Farrmadmin" >
+    update FARRMADMIN
+    <set >
+      <if test="adminname != null" >
+        ADMINNAME = #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="adminpwd != null" >
+        ADMINPWD = #{adminpwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ADMINID = #{adminid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Farrmadmin" >
+    update FARRMADMIN
+    set ADMINNAME = #{adminname,jdbcType=VARCHAR},
+      ADMINPWD = #{adminpwd,jdbcType=VARCHAR}
+    where ADMINID = #{adminid,jdbcType=DECIMAL}
+  </update>
+</mapper>

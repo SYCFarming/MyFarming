@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.FarmcountMapper" >
+  <resultMap id="BaseResultMap" type="pojo.Farmcount" >
+    <id column="COUNTID" property="countid" jdbcType="DECIMAL" />
+    <result column="COUNTNAME" property="countname" jdbcType="VARCHAR" />
+    <result column="COUNTTEL" property="counttel" jdbcType="DECIMAL" />
+    <result column="COUNTEMAIL" property="countemail" jdbcType="VARCHAR" />
+    <result column="COUNTPWD" property="countpwd" jdbcType="VARCHAR" />
+    <result column="COUNTTYPE" property="counttype" jdbcType="DECIMAL" />
+    <result column="COUNTSCORE" property="countscore" jdbcType="DECIMAL" />
+    <result column="COUNTIMAGE" property="countimage" jdbcType="VARCHAR" />
+    <result column="COUNTIDCARD" property="countidcard" jdbcType="VARCHAR" />
+    <result column="COUNTSEX" property="countsex" jdbcType="VARCHAR" />
+    <result column="COUNTRETAIN" property="countretain" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    COUNTID, COUNTNAME, COUNTTEL, COUNTEMAIL, COUNTPWD, COUNTTYPE, COUNTSCORE, COUNTIMAGE, 
+    COUNTIDCARD, COUNTSEX, COUNTRETAIN
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from FARMCOUNT
+    where COUNTID = #{countid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from FARMCOUNT
+    where COUNTID = #{countid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="pojo.Farmcount" >
+    insert into FARMCOUNT (COUNTID, COUNTNAME, COUNTTEL, 
+      COUNTEMAIL, COUNTPWD, COUNTTYPE, 
+      COUNTSCORE, COUNTIMAGE, COUNTIDCARD, 
+      COUNTSEX, COUNTRETAIN)
+    values (#{countid,jdbcType=DECIMAL}, #{countname,jdbcType=VARCHAR}, #{counttel,jdbcType=DECIMAL}, 
+      #{countemail,jdbcType=VARCHAR}, #{countpwd,jdbcType=VARCHAR}, #{counttype,jdbcType=DECIMAL}, 
+      #{countscore,jdbcType=DECIMAL}, #{countimage,jdbcType=VARCHAR}, #{countidcard,jdbcType=VARCHAR}, 
+      #{countsex,jdbcType=VARCHAR}, #{countretain,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Farmcount" >
+    insert into FARMCOUNT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="countid != null" >
+        COUNTID,
+      </if>
+      <if test="countname != null" >
+        COUNTNAME,
+      </if>
+      <if test="counttel != null" >
+        COUNTTEL,
+      </if>
+      <if test="countemail != null" >
+        COUNTEMAIL,
+      </if>
+      <if test="countpwd != null" >
+        COUNTPWD,
+      </if>
+      <if test="counttype != null" >
+        COUNTTYPE,
+      </if>
+      <if test="countscore != null" >
+        COUNTSCORE,
+      </if>
+      <if test="countimage != null" >
+        COUNTIMAGE,
+      </if>
+      <if test="countidcard != null" >
+        COUNTIDCARD,
+      </if>
+      <if test="countsex != null" >
+        COUNTSEX,
+      </if>
+      <if test="countretain != null" >
+        COUNTRETAIN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="countid != null" >
+        #{countid,jdbcType=DECIMAL},
+      </if>
+      <if test="countname != null" >
+        #{countname,jdbcType=VARCHAR},
+      </if>
+      <if test="counttel != null" >
+        #{counttel,jdbcType=DECIMAL},
+      </if>
+      <if test="countemail != null" >
+        #{countemail,jdbcType=VARCHAR},
+      </if>
+      <if test="countpwd != null" >
+        #{countpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="counttype != null" >
+        #{counttype,jdbcType=DECIMAL},
+      </if>
+      <if test="countscore != null" >
+        #{countscore,jdbcType=DECIMAL},
+      </if>
+      <if test="countimage != null" >
+        #{countimage,jdbcType=VARCHAR},
+      </if>
+      <if test="countidcard != null" >
+        #{countidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="countsex != null" >
+        #{countsex,jdbcType=VARCHAR},
+      </if>
+      <if test="countretain != null" >
+        #{countretain,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Farmcount" >
+    update FARMCOUNT
+    <set >
+      <if test="countname != null" >
+        COUNTNAME = #{countname,jdbcType=VARCHAR},
+      </if>
+      <if test="counttel != null" >
+        COUNTTEL = #{counttel,jdbcType=DECIMAL},
+      </if>
+      <if test="countemail != null" >
+        COUNTEMAIL = #{countemail,jdbcType=VARCHAR},
+      </if>
+      <if test="countpwd != null" >
+        COUNTPWD = #{countpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="counttype != null" >
+        COUNTTYPE = #{counttype,jdbcType=DECIMAL},
+      </if>
+      <if test="countscore != null" >
+        COUNTSCORE = #{countscore,jdbcType=DECIMAL},
+      </if>
+      <if test="countimage != null" >
+        COUNTIMAGE = #{countimage,jdbcType=VARCHAR},
+      </if>
+      <if test="countidcard != null" >
+        COUNTIDCARD = #{countidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="countsex != null" >
+        COUNTSEX = #{countsex,jdbcType=VARCHAR},
+      </if>
+      <if test="countretain != null" >
+        COUNTRETAIN = #{countretain,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where COUNTID = #{countid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Farmcount" >
+    update FARMCOUNT
+    set COUNTNAME = #{countname,jdbcType=VARCHAR},
+      COUNTTEL = #{counttel,jdbcType=DECIMAL},
+      COUNTEMAIL = #{countemail,jdbcType=VARCHAR},
+      COUNTPWD = #{countpwd,jdbcType=VARCHAR},
+      COUNTTYPE = #{counttype,jdbcType=DECIMAL},
+      COUNTSCORE = #{countscore,jdbcType=DECIMAL},
+      COUNTIMAGE = #{countimage,jdbcType=VARCHAR},
+      COUNTIDCARD = #{countidcard,jdbcType=VARCHAR},
+      COUNTSEX = #{countsex,jdbcType=VARCHAR},
+      COUNTRETAIN = #{countretain,jdbcType=DECIMAL}
+    where COUNTID = #{countid,jdbcType=DECIMAL}
+  </update>
+</mapper>
